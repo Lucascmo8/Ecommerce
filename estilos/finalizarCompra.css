@@ -1,0 +1,30 @@
+#mainFinalizarCompra{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px;
+    gap: 32px;
+}
+
+#sectionMinhaCesta{
+    display: flex;
+    flex-direction: column;
+}
+
+#listaDeProdutos{
+    display: flex;
+}
+
+#resumoCompraTotal{
+    border-radius: 10px;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.4);
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    justify-content: space-around;
+}
+
+#sectionMinhaCesta{
+    width: 70vw;
+}

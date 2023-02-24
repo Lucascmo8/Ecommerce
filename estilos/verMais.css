@@ -1,0 +1,66 @@
+#mainComprarProduto,#sectionComprarProduto,#detalhesDaCompra,#avaliaçõesComprarProduto{
+    display: flex;
+}
+
+#sectionComprarProduto,#detalhesDaCompra{
+    border-radius: 10px;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.4);
+}
+
+#mainComprarProduto{
+    gap: 32px;
+    justify-content: space-around;
+    height: 75vh;
+}
+
+#sectionComprarProduto{
+    width: 70vw;
+    justify-content: space-between;
+}
+
+#divImagemComprarProduto{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#divImagemComprarProduto > img{
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+}
+
+#textoComprarProduto{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 45%;
+}
+
+#divQuantidadeDoProdutoComprar{
+    border: 2px solid gray;
+}
+
+#avaliaçõesComprarProduto{
+    gap: 24px;
+}
+
+#detalhesDaCompra{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    justify-content: space-around;
+}
+
+#botaoComprarProduto{
+    border-radius: 8px;
+    border: 1px solid #44344F;
+    background-color: #44344F;
+    color: #D3FCD5;
+    transition: 0.5s ease-in-out;
+    height: 40px;
+}
