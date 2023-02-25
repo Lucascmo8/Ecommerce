@@ -15,6 +15,69 @@
     display: flex;
 }
 
+
+#sectionMinhaCesta{
+    width: 70vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.cardDoProdutoFinalizarCompra{
+    border-radius: 10px;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    box-sizing: border-box;
+    padding: 16px;
+    justify-content: space-around;
+    height: 280px;
+    width: 400px;
+}
+
+.imagemDoProdutoFinalizarCompra{
+    width: 150px;
+    height: 150px;
+    flex-grow: 0;
+}
+
+.textoDoProdutoFinalizarCompra{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.divInputeRemoverePreco{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.divInputeRemover{
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+}
+
+.inputDequantidaGeral{
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+}
+
+.inputDequantidaGeral input[type=number]{
+    width: 30px;
+}
+
+.inputDequantidaGeral button{
+    width: 30px;
+}
+
+/* Resumo da compra */
+
 #resumoCompraTotal{
     border-radius: 10px;
     box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.4);
@@ -23,8 +86,8 @@
     flex-direction: column;
     padding: 16px;
     justify-content: space-around;
-}
-
-#sectionMinhaCesta{
-    width: 70vw;
+    height: 200px;
+    position: fixed;
+    margin-left: 75vw;
+    margin-top: 60px;
 }
