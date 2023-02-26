@@ -77,9 +77,7 @@ function verificarCadastro(event) {
     let avisoCadastro = document.getElementById("avisoCadastro");
   
     let clientes = pegarClientesLocalStorage();
-    console.log(typeof(clientes))
     let usuarioExistente = clientes.find(cliente => cliente.usuario === usuarioCadastro.value)
-    console.log(usuarioExistente)
 
     if (senhaCadastro.value != confirmarSenhaCadastro.value) {
       avisoCadastro.innerText = `As senhas precisam ser iguais`;
@@ -135,13 +133,39 @@ function abrirTelaDeLogin() {
 
                     <label>Senha:</label>
                     <input type="password" id="senhaLogin" min="6" max="16" required>
-                    <p id="avisoLogin"></p>
+                    <p id="avisoSenhaErrada"></p>
                 
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
         </div>
     `
+    anularFormLogin(analisarLogin)
+}
+
+function anularFormLogin(analisarLogin) {
+  let formLogin = document.getElementById("formLogin");
+  formLogin.addEventListener("submit", function (event) {
+    event.preventDefault()
+    analisarLogin(event)
+  })
+}
+
+function analisarLogin(event){
+  event.preventDefault()
+  let usuarioLogin = document.getElementById("usuarioLogin")
+  let senhaLogin = document.getElementById("senhaLogin")
+  let avisoUsuarioNaoEncontrado = document.getElementById("avisoUsuarioNaoEncontrado")
+
+  let listaClientes = pegarClientesLocalStorage()
+
+  let clienteEncontrado = listaClientes.find(cliente => cliente.usuario == usuarioLogin.value && cliente.senha == senhaLogin.value)
+  
+  if(clienteEncontrado == undefined){
+    avisoUsuarioNaoEncontrado.innerText = `Login ou senha incorreta`
+  }else{
+    localStorage.setItem("clienteLogado", JSON.stringify(clienteEncontrado))
+  }
 }
 
 // porque no histórico a pessoa tem que estar logada para acessar
