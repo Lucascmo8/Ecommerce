@@ -1,0 +1,32 @@
+#historicoDeCompras{
+    margin-top: 80px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.cardProdutosComprados{
+    border-radius: 10px;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    padding: 16px;
+    width: 70vw;
+}
+
+.dataDaCompra{
+    padding: 12px;
+    border-bottom: 1px solid black;
+}
+
+.divImagemeTextoProdutoComprado{
+    display: flex;
+    justify-content: space-between;
+}
+
+.textoProdutoComprado{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
