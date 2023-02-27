@@ -17,7 +17,10 @@ button,input{
 abbr{
     text-decoration: none;
 }
-
+a{
+    text-decoration: none;
+    color: #D3FCD5;
+}
 /* Menu e Header */
 #menuPrincipal{
     display:flex;

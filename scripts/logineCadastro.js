@@ -3,20 +3,28 @@ let espacoDoLogin = document.getElementById("espacoDoLogin")
 
 iconeLogin.addEventListener("click", verificarLogin)
 
-let usuarioLogado = false
+function pegarClienteLogadoLocalStorage(){
+  return JSON.parse(localStorage.getItem('clienteLogado')) ?? []
+}
 
 function verificarLogin() {
+  let usuarioLogado = pegarClienteLogadoLocalStorage()
   if (usuarioLogado == false) {
     abrirEscolha()
+  }else{
+    alert(`O ${usuarioLogado.usuario} está Logado`)
   }
 }
 
 function abrirEscolha() {
+
   espacoDoLogin.innerHTML = `
-    <div id="divEscolha">
-      <button id="btnFecharEscolha">&times;</button>
-      <button id="btnEscolhaLogin">Login</button>
-      <button id="btnEscolhaCadastro">Cadastrar</button>
+    <div id="divEscolha" class="backgroundEscuro">
+      <div class="parteBranca">
+        <button id="btnFecharEscolha" class="botaoFechar">&times;</button>
+        <button id="btnEscolhaLogin">Login</button>
+        <button id="btnEscolhaCadastro">Cadastrar</button>
+      </div>
     </div>
   `
 
@@ -32,7 +40,8 @@ function removerDivEscolha() {
 
 // Funções de cadastro
 function anularForm(verificarCadastro) {
-  let formCadastro = document.getElementById("formCadastro");
+  let formCadastro = document.getElementById("formCadastro")
+  let btnFecharFormCadastro = document.getElementById("btnFecharFormCadastro").addEventListener("click",fecharFormCadastro)
   formCadastro.addEventListener("submit", function (event) {
     event.preventDefault()
     verificarCadastro(event)
@@ -45,7 +54,7 @@ function abrirTelaDeCadastro() {
       <div id="containerFormCadastro" class="backgroundEscuro">
         <div class="conteinerUsal">
           <h2>Cadastrar</h2>
-          <button id="btnFecharFormCadastro">&times;</button>
+          <button id="btnFecharFormCadastro" class="botaoFechar">&times;</button>
   
           <form id="formCadastro">
             <label>Usuário:</label>
@@ -58,7 +67,7 @@ function abrirTelaDeCadastro() {
             <label>Confirmar Senha:</label>
             <input type="password" id="confirmarSenhaCadastro" min="6" max="16" required>
             <p id="avisoCadastro"></p>
-            <button type="submit">Cadastrar</button>
+            <button type="submit" class="botaoSubmitForm">Cadastrar</button>
           </form>
         </div>
       </div>
@@ -67,22 +76,27 @@ function abrirTelaDeCadastro() {
     anularForm(verificarCadastro)
 }
 
+function fecharFormCadastro(){
+  let containerFormCadastro = document.getElementById("containerFormCadastro")
+  espacoDoLogin.removeChild(containerFormCadastro)
+}
+
 function verificarCadastro(event) {
-    event.preventDefault();
-    let btnFecharFormCadastro = document.getElementById("btnFecharFormCadastro").addEventListener("click",()=>espacoDoLogin.removeChild(containerFormCadastro));
-    let usuarioCadastro = document.getElementById("usuarioCadastro");
-    let senhaCadastro = document.getElementById("senhaCadastro");
-    let confirmarSenhaCadastro = document.getElementById("confirmarSenhaCadastro");
-    let avisoUsuarioUsado = document.getElementById("avisoUsuarioUsado");
-    let avisoCadastro = document.getElementById("avisoCadastro");
+    event.preventDefault()
+    
+    let usuarioCadastro = document.getElementById("usuarioCadastro")
+    let senhaCadastro = document.getElementById("senhaCadastro")
+    let confirmarSenhaCadastro = document.getElementById("confirmarSenhaCadastro")
+    let avisoUsuarioUsado = document.getElementById("avisoUsuarioUsado")
+    let avisoCadastro = document.getElementById("avisoCadastro")
   
-    let clientes = pegarClientesLocalStorage();
+    let clientes = pegarClientesLocalStorage()
     let usuarioExistente = clientes.find(cliente => cliente.usuario === usuarioCadastro.value)
 
     if (senhaCadastro.value != confirmarSenhaCadastro.value) {
-      avisoCadastro.innerText = `As senhas precisam ser iguais`;
+      avisoCadastro.innerText = `As senhas precisam ser iguais`
     } else if (usuarioExistente!== undefined) {
-      avisoUsuarioUsado.innerText = `Nome de usuário já existe`;
+      avisoUsuarioUsado.innerText = `Nome de usuário já existe`
     } else {
       let usuarioNovo = {
         usuario: usuarioCadastro.value,
@@ -90,17 +104,13 @@ function verificarCadastro(event) {
         moedas: 1000,
         carrinho: [],
         compras: []
-      };
+      }
   
-      criarUsuario(usuarioNovo);
+      criarUsuario(usuarioNovo)
       fecharFormCadastro()
     }
 }
 
-function fecharFormCadastro(){
-    let containerFormCadastro = document.getElementById("containerFormCadastro")
-    espacoDoLogin.removeChild(containerFormCadastro)
-}
 
 function pegarClientesLocalStorage(){
     return JSON.parse(localStorage.getItem('clientes')) ?? []
@@ -123,8 +133,8 @@ function abrirTelaDeLogin() {
     espacoDoLogin.innerHTML += `
         <div id="containerFormlogin" class="backgroundEscuro">
             <div class="conteinerUsal">
-                <h2>Cadastrar</h2>
-                <button id="btnFecharFormLogin">&times;</button>
+                <h2>Login</h2>
+                <button id="btnFecharFormLogin" class="botaoFechar">&times;</button>
 
                 <form id="formLogin">
                     <label>Usuário:</label>
@@ -135,7 +145,7 @@ function abrirTelaDeLogin() {
                     <input type="password" id="senhaLogin" min="6" max="16" required>
                     <p id="avisoSenhaErrada"></p>
                 
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit" class="botaoSubmitForm">Login</button>
                 </form>
             </div>
         </div>
@@ -144,11 +154,17 @@ function abrirTelaDeLogin() {
 }
 
 function anularFormLogin(analisarLogin) {
-  let formLogin = document.getElementById("formLogin");
+  let formLogin = document.getElementById("formLogin")
+  let btnFecharFormLogin = document.getElementById("btnFecharFormLogin").addEventListener("click",fecharFormLogin)
   formLogin.addEventListener("submit", function (event) {
     event.preventDefault()
     analisarLogin(event)
   })
+}
+
+function fecharFormLogin(){
+  let containerFormlogin = document.getElementById("containerFormlogin")
+  espacoDoLogin.removeChild(containerFormlogin)
 }
 
 function analisarLogin(event){
@@ -165,6 +181,7 @@ function analisarLogin(event){
     avisoUsuarioNaoEncontrado.innerText = `Login ou senha incorreta`
   }else{
     localStorage.setItem("clienteLogado", JSON.stringify(clienteEncontrado))
+    location.reload()
   }
 }
 

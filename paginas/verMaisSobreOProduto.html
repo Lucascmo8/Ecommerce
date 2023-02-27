@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="../estilos/verMais.css">
     <link rel="shortcut icon" href="../imagens/icone carrinho Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../estilos/logineCadastro.css">
     <title>Lojinha | Produtos</title>
 </head>
 <body>
+    <div id="espacoDoLogin"></div>
     <header id="menuPrincipal">
         <div id="logoMenu">
             <img src="../imagens/icone carrinho Logo.png" alt="">
-            <h1>Aurorean Store</h1>
+            <a href="index.html"><h1>Aurorean Store</h1></a>
         </div>
         <div id="iconesMenu">
             <button id="botaoCarrinhoDoMenu" alt="Carrinho"></button>
-            <p>$ 0.00</p>
+            <p id="dinheiroCliente">$ 0.00</p>
             <button id="iconeLogin" alt="Login"></button>
             <button id="iconeAviso" alt="Aviso"></button>
         </div>
@@ -37,23 +39,26 @@
                 
                 <h3 id="precoComprarProduto"></h3>
 
-                <div id="divQuantidadeDoProdutoComprar">
-                    <button>+</button>
-                    <input type="number" name="" id="">
-                    <button>-</button>
-                </div>
+                
             </div>
         </section>
 
-        <aside id="detalhesDaCompra">
+        <form id="formDetalhesDaCompra">
             <h4>Resumo do Pedido</h4>
-
-            <p id="precoTotalVermais">$500</p>
-
+            <p id="precoTotalVermais">$ 0</p>
+            <div id="divQuantidadeDoProdutoComprar">
+                <button id="btnMaisDetalhes" class="btnMais">+</button>
+                <input type="number" name="quatidadeDoProduto" id="quatidadeDoProduto" value="1" min="1" max="10">
+                <button id="btnMenosDetalhes" class="btnMenos">-</button>
+                <p>Quantidade</p>
+            </div>
             <button id="botaoComprarProduto">Comprar</button>
-        </aside>
+        </form>
 
     </main>
-    <script src="../scripts/maisDetalhesDoProduto.js"></script>
+    <script src="../scripts/maisDetalhesDoProduto.js" type="module"></script>
+    <script src="../scripts/mandarProCarrinho.js" type="module"></script>
+    <script src="../scripts/logineCadastro.js"></script>
+    <script src="../scripts/alterarHeader.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
-import { teste } from "./finalizarCompra.js"
+import { adicionarAoCarrinho } from "./mandarProCarrinho.js"
+
 const url = `https://fakestoreapi.com/products`
 let produtos = []
 const demostracaoDosProdutos = document.getElementById("demostracaoDosProdutos")
@@ -16,7 +17,7 @@ async function conectApi(urlApi){
                     <div class="textoDoProduto">
                         <p>${produto.category}</p>
                         <h2><abbr title="${produto.title}">${produto.title}</abbr></h2>
-                        <h3>$${produto.price}</h3>
+                        <h3>$${produto.price.toFixed(2)}</h3>
                         <div class="divBotoesDoCard">
                             <button class="botaoComprarDoCard" data-comprar="${produto.id}">Comprar</button>
                             <button class="botaoCarrinhoDoCard" alt="adicionar ao carrinho" data-carrinho="${produto.id}"></button>
@@ -28,16 +29,23 @@ async function conectApi(urlApi){
         });    
     }
     
-    teste()
-    var ComprarBtn = await document.querySelectorAll("#demostracaoDosProdutos>div>div>div>.botaoComprarDoCard")
-    ComprarBtn.forEach(botao =>{
-        botao.addEventListener("click",function funciona(event){
+    
+    var comprarBtn = await document.querySelectorAll("#demostracaoDosProdutos>div>div>div>.botaoComprarDoCard")
+    comprarBtn.forEach(botao =>{
+        botao.addEventListener("click",function produtudoEscolhido(){
             let valorId = botao.dataset.comprar
             localStorage.setItem("produtoVerMais",JSON.stringify(valorId))
             window.location.href = "verMaisSobreOProduto.html"
         })
     })
     
+    var carrinhoBtn = await document.querySelectorAll("#demostracaoDosProdutos>div>div>div>.botaoCarrinhoDoCard")
+    carrinhoBtn.forEach(botao =>{
+        botao.addEventListener("click",function produtudoEscolhido(){
+            let valorId = botao.dataset.carrinho
+            adicionarAoCarrinho(valorId,1,produtos[valorId - 1].price,false)
+        })
+    })
 }
 
 conectApi(url)

@@ -7,17 +7,19 @@
     <link rel="shortcut icon" href="../imagens/icone carrinho Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/home.css">
     <link rel="stylesheet" href="../estilos/index.css">
+    <link rel="stylesheet" href="../estilos/logineCadastro.css">
     <title>Lojinha</title>
 </head>
 <body id="corpoHome">
+    <div id="espacoDoLogin"></div>
     <header id="menuPrincipal">
         <div id="logoMenu">
             <img src="../imagens/icone carrinho Logo.png" alt="">
-            <h1>Aurorean Store</h1>
+            <a href="index.html"><h1>Aurorean Store</h1></a>
         </div>
         <div id="iconesMenu">
             <button id="botaoCarrinhoDoMenu" alt="Carrinho"></button>
-            <p>$ 0.00</p>
+            <p id="dinheiroCliente">$ 0.00</p>
             <button id="iconeLogin" alt="Login"></button>
             <button id="iconeAviso" alt="Aviso"></button>
         </div>
@@ -28,7 +30,10 @@
     </main>
 
     <script src="../scripts/main.js" type="module"></script>
+    <script src="../scripts/logineCadastro.js"></script>
+    <script src="../scripts/alterarHeader.js"></script>
     <script src="../scripts/mandarProdutoParaACompra.js" type="module"></script>
+    <script src="../scripts/mandarProCarrinho.js" type="module"></script>
 </body>
 </html>
 

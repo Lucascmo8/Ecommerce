@@ -1,10 +1,24 @@
-import { produtos } from "./main.js";
+// Isso é o template de como será mostrado os itens na cesta
 
 let sectionMinhaCesta = document.getElementById("sectionMinhaCesta")
 
-async function teste(){
-    console.log(`foi`)
-    produtos.map(produto=>{
+function pegarClienteLogadoLocalStorage(){
+    return JSON.parse(localStorage.getItem('clienteLogado')) ?? []
+}
+
+const produtosNoCarrinho = pegarClienteLogadoLocalStorage().carrinho
+
+async function pegarProdutosNoCarrinho(idDoProduto){
+    const res = await fetch(`https://fakestoreapi.com/products/${idDoProduto}`)
+    let produtoEscolhido = await res.json()
+    return produtoEscolhido
+}
+
+
+async function mostrarProdutosDoCarrinho(){
+    let produtosNoCarrinhoFiltrados = await filtrarProdutoDoCarrinho()
+
+    produtosNoCarrinhoFiltrados.map(produto=>{
         sectionMinhaCesta.innerHTML +=`
         <div id="listaDeProdutos">
         <div class="cardDoProdutoFinalizarCompra">
@@ -14,8 +28,8 @@ async function teste(){
                 <div class="divInputeRemoverePreco">
                     <div class="divInputeRemover">
                         <div class="inputDequantidaGeral">
-                            <button>++</button>
-                            <input type="number">
+                            <button>+</button>
+                            <input type="number" c>
                             <button>--</button>
                         </div>
                         <button>Remover</button>
@@ -29,4 +43,14 @@ async function teste(){
     })
 }
 
-export{teste}
+
+async function filtrarProdutoDoCarrinho() {
+    const produtosFiltrados = produtosNoCarrinho.map((element) => {
+      return pegarProdutosNoCarrinho(element.idProduto);
+    });
+    return Promise.all(produtosFiltrados);
+  }
+
+mostrarProdutosDoCarrinho()
+
+export{mostrarProdutosDoCarrinho}

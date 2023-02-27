@@ -5,12 +5,12 @@ let lucas= [
         moedas:1000,
         carrinho:[
             {
-                IdProduto:"monitor",
+                IdProduto:"4",
                 quantidade:2,
                 precoTotal:999
             },
             {
-                IdProduto:"SSD 500TB",
+                IdProduto:"11",
                 quantidade:1,
                 precoTotal:888
             }
