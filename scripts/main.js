@@ -31,6 +31,7 @@ async function conectApi(urlApi){
     
     
     var comprarBtn = await document.querySelectorAll("#demostracaoDosProdutos>div>div>div>.botaoComprarDoCard")
+    console.log(comprarBtn)
     comprarBtn.forEach(botao =>{
         botao.addEventListener("click",function produtudoEscolhido(){
             let valorId = botao.dataset.comprar

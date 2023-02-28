@@ -49,8 +49,8 @@ formDetalhesDaCompra.addEventListener("submit",(event)=>{
     event.preventDefault()
     let idDoProduto = pegarIdDoproduto()
     let quantidade = Number(quatidadeDoProduto.value)
-    let precoTotal = produtoEscolhido.price * quatidadeDoProduto.value
-    adicionarAoCarrinho(idDoProduto,quantidade,precoTotal.toFixed(2),true)
+    let preco = produtoEscolhido.price
+    adicionarAoCarrinho(idDoProduto,quantidade,preco.toFixed(2),true)
     
 })
 
