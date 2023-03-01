@@ -1,0 +1,75 @@
+@media (min-width:1150px){
+    #sectionMinhaCesta{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:1150px){
+    #mainFinalizarCompra{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sectionMinhaCesta{
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #listaDeProdutos{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #resumoCompraTotal,#btnFinalizarCompra{
+        position: relative;
+        margin-left: 0;
+        width: 400px;
+        z-index: -1;
+    }
+
+    #btnFinalizarCompra{
+        margin-top: 0;
+    }
+
+    .cardDoProdutoFinalizarCompra{
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+@media (max-width:900px){
+    #sectionMinhaCesta{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:420px){
+    #resumoCompraTotal,#btnFinalizarCompra{
+        position: relative;
+        margin-left: 0;
+        width: 250px;
+        z-index: -1;
+    }
+
+    #btnFinalizarCompra{
+        margin-top: 0;
+    }
+
+    .cardDoProdutoFinalizarCompra{
+        align-self: center;
+        justify-self: center;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+    }
+
+    .imagemDoProdutoFinalizarCompra{
+        width: 60%;
+        align-self: center;
+        justify-self: center;
+    }
+}

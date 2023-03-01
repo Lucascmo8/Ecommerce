@@ -25,11 +25,10 @@ async function conectApi(urlApi){
                     </div>
                 </div>
             `
-            
         });    
     }
     
-    
+    // Existe Uma Forma Melhor de fazer isso v ?
     var comprarBtn = await document.querySelectorAll("#demostracaoDosProdutos>div>div>div>.botaoComprarDoCard")
     console.log(comprarBtn)
     comprarBtn.forEach(botao =>{
@@ -44,6 +43,8 @@ async function conectApi(urlApi){
     carrinhoBtn.forEach(botao =>{
         botao.addEventListener("click",function produtudoEscolhido(){
             let valorId = botao.dataset.carrinho
+            this.classList.add("animate__animated")
+            this.classList.add("animate__tada")
             adicionarAoCarrinho(valorId,1,produtos[valorId - 1].price,false)
         })
     })

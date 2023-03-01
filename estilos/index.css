@@ -7,7 +7,7 @@
     font-family: sans-serif;
 }
 
-button,input{
+button,input,a{
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -20,6 +20,7 @@ abbr{
 a{
     text-decoration: none;
     color: #D3FCD5;
+
 }
 /* Menu e Header */
 #menuPrincipal{
@@ -79,10 +80,9 @@ a{
 /* Area dos Produtos */
 
 #demostracaoDosProdutos{
-    margin-top: 90px;
+    margin-top: 20px;
     padding: 0px 32px;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
     gap: 32px;
     justify-items: center;
 }
@@ -175,4 +175,21 @@ a{
     margin-top: 80px;
 }
 
-/*  */
+
+@media (max-width:540px){
+    #menuPrincipal a>h1{
+        font-size: 24px;
+    }
+
+    p#dinheiroCliente{
+        font-size: 12px;
+    }
+
+    #iconesMenu{
+        display: grid;
+        grid-template-columns: 1fr 1.8fr;
+        justify-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}

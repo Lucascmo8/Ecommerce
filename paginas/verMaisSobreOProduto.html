@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../estilos/verMais.css">
     <link rel="shortcut icon" href="../imagens/icone carrinho Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/logineCadastro.css">
+    <link rel="stylesheet" href="../estilos/responsivoVerMais.css">
     <title>Lojinha | Produtos</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
             <a href="index.html"><h1>Aurorean Store</h1></a>
         </div>
         <div id="iconesMenu">
-            <button id="botaoCarrinhoDoMenu" alt="Carrinho"></button>
+            <a href="finalizarComprar.html" id="botaoCarrinhoDoMenu" alt="Carrinho"></a>
             <p id="dinheiroCliente">$ 0.00</p>
             <button id="iconeLogin" alt="Login"></button>
             <button id="iconeAviso" alt="Aviso"></button>
@@ -46,12 +47,13 @@
         <form id="formDetalhesDaCompra">
             <h4>Resumo do Pedido</h4>
             <p id="precoTotalVermais">$ 0</p>
+            <p id="textoQuantidade">Quantidade</p>
             <div id="divQuantidadeDoProdutoComprar">
                 <button id="btnMaisDetalhes" class="btnMais">+</button>
                 <input type="number" name="quatidadeDoProduto" id="quatidadeDoProduto" value="1" min="1" max="10">
                 <button id="btnMenosDetalhes" class="btnMenos">-</button>
-                <p>Quantidade</p>
             </div>
+            
             <button id="botaoComprarProduto">Comprar</button>
         </form>
 

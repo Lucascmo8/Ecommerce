@@ -7,20 +7,14 @@
 }
 
 #sectionMinhaCesta{
-    display: flex;
-    flex-direction: column;
+    width: 70vw;
+    display: grid;
+    
+    gap: 32px;
 }
 
 #listaDeProdutos{
     display: flex;
-}
-
-
-#sectionMinhaCesta{
-    width: 70vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
 }
 
 .cardDoProdutoFinalizarCompra{
@@ -52,7 +46,8 @@
 
 .divInputeRemoverePreco{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
 }
 
@@ -60,20 +55,16 @@
     display: flex;
     flex-direction: column;   
     align-items: center;
+    gap: 8px;
+    width: 50%;
 }
 
-.inputDequantidaGeral{
-    display: flex;
-    flex-direction: row;
-    gap: 0;
-}
-
-.inputDequantidaGeral input[type=number]{
-    width: 30px;
-}
-
-.inputDequantidaGeral button{
-    width: 30px;
+.inputQuantidadeFinalizarCompra{
+    width: 80%;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 8px;
 }
 
 /* Resumo da compra */
@@ -90,4 +81,44 @@
     position: fixed;
     margin-left: 75vw;
     margin-top: 60px;
+    gap: 8px;
+}
+
+
+#quatidadeProdutosResumo,#precoProdutosResumo{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#divFinalizarCompraEVerMais{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+
+
+#btnFinalizarCompra{
+    height: 50px;
+    width: 20vw;
+    position: fixed;
+    margin-left: 75vw;
+    margin-top: 280px;
+    border-radius: 8px;
+    border: 1px solid #44344F;
+    background-color: #44344F;
+    color: #D3FCD5;
+    transition: 0.5s ease-in-out;
+}
+
+#btnFinalizarCompra:hover{
+    background-color: #fff;
+    color: #44344F;
+}
+
+#btnVoltarAHome{
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
 }

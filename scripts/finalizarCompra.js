@@ -4,6 +4,7 @@ let sectionMinhaCesta = document.getElementById("sectionMinhaCesta")
 let quatidadeProdutosResumo = document.getElementById("quatidadeProdutosResumo")
 let precoProdutosResumo = document.getElementById("precoProdutosResumo")
 let btnFinalizarCompra = document.getElementById("btnFinalizarCompra")
+console.log(btnFinalizarCompra)
 
 function pegarClienteLogadoLocalStorage() {
     return JSON.parse(localStorage.getItem('clienteLogado')) ?? []
@@ -25,33 +26,32 @@ async function mostrarProdutosDoCarrinho() {
 
     await produtosNoCarrinhoFiltrados.forEach((produto, index) => {
         sectionMinhaCesta.innerHTML += `
-            <div id="listaDeProdutos">
                 <div class="cardDoProdutoFinalizarCompra">
                     <img class="imagemDoProdutoFinalizarCompra" src="${produto.imagem}" alt="picture ${produto.title}">
                     <div class="textoDoProdutoFinalizarCompra">
                         <h3>${produto.titulo}</h3>
                         <div class="divInputeRemoverePreco">
                             <div class="divInputeRemover">
-                            <input type="number" value="${produto.quantidade}" id="inputNumber${index}" class="inputQuantidadeFinalizarCompra" data-quantidade="${index}">
+                                <input type="number" value="${produto.quantidade}" id="inputNumber${index}" class="inputQuantidadeFinalizarCompra" data-quantidade="${index}">
 
                                 <button>Remover</button>
                             </div>
-                            <p class="precoTotalCard" data-precoTotal="${index}">${produto.precoTotal}</p>
+                            <p class="precoTotalCard" data-precoTotal="${index}">$ ${produto.precoTotal}</p>
                         </div>
                     </div>
                 </div>
-            </div>
         `
     })
     
-    var inputNumero = await document.querySelectorAll("#sectionMinhaCesta>div>div>div>div>div>.inputQuantidadeFinalizarCompra")
+    var inputNumero = await document.querySelectorAll("#sectionMinhaCesta>div>div>div>div>.inputQuantidadeFinalizarCompra")
+    console.log(inputNumero)
     inputNumero.forEach(inputNum =>{
         inputNum.addEventListener("change",()=>{
             let qualInput = inputNum.dataset.quantidade
             var precoParaMudar = document.querySelector(`[data-precoTotal="${qualInput}"]`)
             let valorTotal = inputNum.value * produtosNoCarrinhoFiltrados[qualInput].precoUnico
             atualizarCarrinho(produtosNoCarrinhoFiltrados[qualInput].idProduto,inputNum.value,valorTotal,qualInput)
-            precoParaMudar.innerText=`${valorTotal.toFixed(2)}`
+            precoParaMudar.textContent=`${valorTotal}`
             atualizarResumoDaCompra()
         })
     })
@@ -101,29 +101,43 @@ function atualizarResumoDaCompra(){
     if(somaQuantidade>1){
         produtoPlural = "produtos"
     }
-    quatidadeProdutosResumo.innerText = `${somaQuantidade} ${produtoPlural}`
+    quatidadeProdutosResumo.textContent = `${somaQuantidade} ${produtoPlural}`
 
     let pegarPrecoTotal = clienteLogado.carrinho.map(quant=>quant.precoTotal)
     let somaPrecoTotal = pegarPrecoTotal.reduce((somaPrecoTotal,index)=> Number(somaPrecoTotal) + Number(index))
-    precoProdutosResumo.innerText = `$ ${somaPrecoTotal.toFixed(2)}`
+    let teste = somaPrecoTotal.toFixed(2)
+    precoProdutosResumo.textContent = `$ ${teste}`
+    return somaPrecoTotal
 }
-atualizarResumoDaCompra()
 
 btnFinalizarCompra.addEventListener("click",finalizarCompra)
 
 function finalizarCompra(){
     let clienteLogado = pegarClienteLogadoLocalStorage()
-    let carrinhoClienteLogado = pegarClienteLogadoLocalStorage().carrinho
-    let comprasClienteLogado = pegarClienteLogadoLocalStorage().compras
+    let carrinhoClienteLogado = clienteLogado.carrinho
+    let comprasClienteLogado = clienteLogado.compras
+    let moedasClienteLogado = clienteLogado.moedas
+    let somaPrecoTotal = atualizarResumoDaCompra()
 
-    carrinhoClienteLogado.forEach(produto=> comprasClienteLogado.push(produto))
+    if(somaPrecoTotal>moedasClienteLogado){
+        alert(`Saldo Insuficiente para realizar a compra`)
+    }else{
+        carrinhoClienteLogado.forEach(produto=> comprasClienteLogado.push(produto))
     clienteLogado.carrinho = []
     clienteLogado.compras = carrinhoClienteLogado
-
+    clienteLogado.moedas = moedasClienteLogado - somaPrecoTotal
     
     localStorage.setItem("clienteLogado",JSON.stringify(clienteLogado))
     location.reload()
+    }
+    
 }
 
+let verificarCarrinho = pegarClienteLogadoLocalStorage().carrinho
 
-mostrarProdutosDoCarrinho()
+if(verificarCarrinho.length > 0){
+    atualizarResumoDaCompra()
+    mostrarProdutosDoCarrinho()
+}else{
+    sectionMinhaCesta.innerHTML += `<h2>O Carrinho Está Vazio</h2>`   
+}

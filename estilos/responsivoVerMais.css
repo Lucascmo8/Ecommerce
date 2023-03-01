@@ -1,0 +1,22 @@
+@media (max-width:936px) {
+    #mainComprarProduto{
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        margin-top: 120px;
+    }
+    #sectionComprarProduto{
+        width: 80vw;
+        flex-direction: column;
+    }
+
+    #divImagemComprarProduto,#textoComprarProduto{
+        width: 100%;
+
+    }
+
+    #formDetalhesDaCompra{
+        width: 80%;
+        margin-bottom: 15px;
+    }
+}

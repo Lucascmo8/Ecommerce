@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../estilos/index.css">
     <link rel="stylesheet" href="../estilos/finalizarCompra.css">
     <link rel="stylesheet" href="../estilos/logineCadastro.css">
+    <link rel="stylesheet" href="../estilos/responsivoFinalizarCompra.css">
     <title>Lojinha | Carrinho</title>
 </head>
 <body id="corpoFinalizarCompra">
@@ -18,31 +19,27 @@
             <a href="index.html"><h1>Aurorean Store</h1></a>
         </div>
         <div id="iconesMenu">
-            <button id="botaoCarrinhoDoMenu" alt="Carrinho"></button>
+            <a href="finalizarComprar.html" id="botaoCarrinhoDoMenu" alt="Carrinho"></a>
             <p id="dinheiroCliente">$ 0.00</p>
             <button id="iconeLogin" alt="Login"></button>
             <button id="iconeAviso" alt="Aviso"></button>
         </div>
     </header>
     <main id="mainFinalizarCompra">
+        <aside id="resumoCompraTotal">
+            <h2>Resumo do pedido</h2>
+            <div>
+                <p id="quatidadeProdutosResumo">0 produto</p>
+                <p id="precoProdutosResumo">$ 0</p>
+            </div>
+        </aside>
+        <button id="btnFinalizarCompra">Comprar</button>
+        
         <section id="sectionMinhaCesta">
             <h2>Minha Cesta</h2>
             <P></P>
             
         </section>
-        
-        <aside id="resumoCompraTotal">
-            <h2>Resumo do pedido</h2>
-            <div>
-                <p id="quatidadeProdutosResumo">0 produto</p>
-                <p id="precoProdutosResumo">$ 204</p>
-            </div>
-            <div>
-                <p>Total</p>
-                <p>valor</p>
-                <button id="btnFinalizarCompra">Comprar</button>
-            </div>
-        </aside>
     </main>
 </body>
 <script src="../scripts/logineCadastro.js"></script>

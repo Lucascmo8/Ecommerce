@@ -10,7 +10,6 @@
 #mainComprarProduto{
     gap: 32px;
     justify-content: space-around;
-    height: 70vh;
 }
 
 #sectionComprarProduto{
@@ -49,16 +48,15 @@
 }
 
 #divQuantidadeDoProdutoComprar {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    display: flex;
+    margin-top: -30px;
     width: 100px;
     height: 30px;
     gap: 0;
     align-content: center;
 }
 
-#divQuantidadeDoProdutoComprar p{
-    margin-left: 16px;
+#textoQuantidade{
     font-size: 20px;
 }
 
